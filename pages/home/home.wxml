@@ -1,11 +1,33 @@
 <!--pages/home/home.wxml-->
 <view>
+
   <swiper indicator-dots='true' autoplay='true'>
     <block wx:for="{{bannerArr}}">
       <swiper-item class = "banner-item">
-        <image class='item.image' src="{{item.img.url}}"></image>
+        <image mode='aspectFill' class='item.image' src="{{item.img.url}}"></image>
       </swiper-item>
     </block>
   </swiper>
-  <view>测试</view>
+
+  <view class='home-main'> 
+ 
+    <view class='home-main-theme'>
+      <view class='home-main-header'>精选主题</view>
+      <view class='theme-box'>
+        <block wx:for="{{themeArr}}">
+        <view wx:if="{{index==2}}" class='theme-item big'>
+          <image src='{{item.topic_img.url}}'></image>
+        </view>
+        <view wx:else class='theme-item'>
+          <image src='{{item.topic_img.url}}'></image>
+        </view>
+        </block>
+      </view>
+    </view>
+    <view class='home-main-products'>
+      <view class='home-main-header'>最近更新</view>
+      <template is="products" data="{{products:productsArr}}"></template>
+    </view>
+  </view>
+
 </view>

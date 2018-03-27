@@ -4,16 +4,37 @@ class Home extends Base{
     super();
   }
   
-  getBannerData(id,callBack){
+  getBannerData(id,callback){
     var params = {
       url:'banner/'+id,
       
-      sCallBack:function(res){
-        callBack && callBack(res.items);
+      sCallback:function(res){
+        callback && callback(res.items);
       }
     }
     this.request(params);
     
+  }
+
+  getThemeData(ids,callback){
+    var params = {
+      url : 'theme?ids='+ids,
+      sCallback:function(res){
+        callback && callback(res);
+      }
+    }
+    this.request(params);
+  }
+
+  getProductsData(callback){
+    var params = {
+      url: 'product/recent',
+      sCallback: function(data){
+        console.log(data);
+        callback && callback(data);
+      }
+    }
+    this.request(params);
   }
 }
 

@@ -17,15 +17,30 @@ Page({
   
   __loadData:function(){
     var id = 1;
-    var data = home.getBannerData(id,(res)=>{
+    // 滚动栏
+    home.getBannerData(id,(res)=>{
       //数据绑定
-      console.log(res);
       this.setData({
         'bannerArr': res,
       });
     });
-  },
-  callBack:function(res){
-    console.log(res);
+
+  // 主题
+  var ids = "1,2,3";
+    home.getThemeData(ids,(res)=>{
+      // 数据绑定
+      this.setData({
+        'themeArr': res,
+      });
+    });
+
+    home.getProductsData((data)=>{
+      //数据绑定
+      this.setData({
+        'prodoctsArr': data,
+      });
+    });
+
   }
+
 })
